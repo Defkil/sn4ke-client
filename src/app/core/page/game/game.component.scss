@@ -1,0 +1,153 @@
+.container {
+}
+.info {
+  display: flex;
+  max-width: 900px;
+  margin: 0 auto;
+
+  &__room-code {
+    padding-right: 16px;
+    font-size: 64px;
+  }
+  &__leave-link {
+    margin-top: -64px;
+    font-size: 24px;
+    color: #000;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    cursor: pointer;
+  }
+  &__scores {
+    text-align: right;
+    flex: 1;
+    display: table;
+    &-container {
+      vertical-align: middle;
+      display: table-cell;
+    }
+    &-item {
+      float: right;
+      white-space: nowrap;
+      padding-left: 16px;
+      font-size: 28px;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 4px;
+    }
+  }
+}
+.game {
+  min-height: 100vh;
+  max-width: 900px;
+  margin: 0 auto;
+  &--hidden {
+    display: none;
+  }
+  &__element {
+    canvas {
+      width: 100%;
+    }
+  }
+}
+
+.loading {
+  width: 100%;
+  display: inline-block;
+  &__heading {
+    font-size: 86px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 300px;
+    @media (max-height: 500px) {
+      line-height: 60vh;
+    }
+  }
+}
+
+.start-game {
+  max-width: 350px;
+  margin: 20% auto 0 auto;
+  cursor: pointer;
+  &:hover {
+    -webkit-animation: swing 1s ease;
+    animation: swing 1s ease;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    cursor: pointer;
+  }
+  &__button-text {
+    width: 100%;
+    font-size: 38px;
+    font-weight: 700;
+    text-align: center;
+  }
+}
+
+
+
+@-webkit-keyframes swing
+{
+  15%
+  {
+    -webkit-transform: translateX(5px);
+    transform: translateX(5px);
+  }
+  30%
+  {
+    -webkit-transform: translateX(-5px);
+    transform: translateX(-5px);
+  }
+  50%
+  {
+    -webkit-transform: translateX(3px);
+    transform: translateX(3px);
+  }
+  65%
+  {
+    -webkit-transform: translateX(-3px);
+    transform: translateX(-3px);
+  }
+  80%
+  {
+    -webkit-transform: translateX(2px);
+    transform: translateX(2px);
+  }
+  100%
+  {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+@keyframes swing
+{
+  15%
+  {
+    -webkit-transform: translateX(5px);
+    transform: translateX(5px);
+  }
+  30%
+  {
+    -webkit-transform: translateX(-5px);
+    transform: translateX(-5px);
+  }
+  50%
+  {
+    -webkit-transform: translateX(3px);
+    transform: translateX(3px);
+  }
+  65%
+  {
+    -webkit-transform: translateX(-3px);
+    transform: translateX(-3px);
+  }
+  80%
+  {
+    -webkit-transform: translateX(2px);
+    transform: translateX(2px);
+  }
+  100%
+  {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}

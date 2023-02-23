@@ -1,0 +1,49 @@
+<app-layout>
+  <div class="info">
+    <div>
+      <h2 class="info__room-code">Roomcode: {{roomCode}}</h2>
+        <div class="info__leave-link" (click)="leaveGame()">
+          Leave
+        </div>
+      </div>
+    <div class="info__scores">
+      <div class="info__scores-container">
+        <div [ngStyle]="{'text-decoration-color': getColor(player.colorId)}" class="info__scores-item" *ngFor="let player of playerInfos">{{player.name}}: {{player.score}}</div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="activeStatus === GameStatus.WAITING" class="loading">
+    <div class="start-game">
+      <app-rough-box
+        [options]="{fill: 'rgba(255,0,0,0.6)', stroke: 'black'}"
+        [padding]="18"
+        (click)="startGame()"
+        (keydown.enter)="startGame()"
+        class=""
+        height="70px"
+        tabindex="0">
+      <div class="start-game__button-text">
+        Start Game
+      </div>
+      </app-rough-box>
+    </div>
+  </div>
+  <div *ngIf="activeStatus === GameStatus.COUNTDOWN_5" class="loading">
+    <h1 class="loading__heading">5</h1>
+  </div>
+  <div *ngIf="activeStatus === GameStatus.COUNTDOWN_4" class="loading">
+    <h1 class="loading__heading">4</h1>
+  </div>
+  <div *ngIf="activeStatus === GameStatus.COUNTDOWN_3" class="loading">
+    <h1 class="loading__heading">3</h1>
+  </div>
+  <div *ngIf="activeStatus === GameStatus.COUNTDOWN_2" class="loading">
+    <h1 class="loading__heading">2</h1>
+  </div>
+  <div *ngIf="activeStatus === GameStatus.COUNTDOWN_1" class="loading">
+    <h1 class="loading__heading">1</h1>
+  </div>
+  <div [ngClass]="{'game--hidden': activeStatus !== GameStatus.PLAYING}" class="game">
+    <div #gameContainer class="game__element"></div>
+  </div>
+</app-layout>

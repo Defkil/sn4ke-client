@@ -1,0 +1,95 @@
+<app-layout>
+  <div class="home">
+    <h1 class="home__title">Sn4ke</h1>
+    <p class="home__description">
+      Small multiplayer game where you have to dodge the other snakes
+    </p>
+    <div class="home__type">
+      <app-rough-box
+        (click)="isPlayer = true"
+        (keydown.enter)="isPlayer = true"
+        [options]="{fill: (isPlayer)? '#6363ff': 'grey', stroke: 'black'}"
+        [padding]="18"
+        class="home__box__button home__box__button--available home__type__box"
+        height="70px"
+        tabindex="0">
+      <span class="home__box__button__text">
+        Player
+      </span>
+      </app-rough-box>
+      <app-rough-box
+        (click)="isPlayer = false"
+        (keydown.enter)="isPlayer = false"
+        [options]="{fill: (isPlayer)? 'grey': 'blue', stroke: 'black'}"
+        [padding]="18"
+        class="home__box__button home__box__button--available home__type__box"
+        height="70px"
+        tabindex="0">
+      <span class="home__box__button__text">
+        Screen
+      </span>
+      </app-rough-box>
+    </div>
+    <app-rough-box *ngIf="isPlayer" class="home__box" height="116px">
+      <div>
+        <label class="home__box__label" for="username">
+          Username:
+        </label>
+      </div>
+      <input
+        (input)="inputName = $any($event.target).value"
+        class="home__box__input"
+        id="username"
+        appInputPlaceholder
+        [placeholderList]="placeholderNicknameList"
+        type="text"
+        spellcheck="false"/>
+    </app-rough-box>
+    <app-rough-box class="home__box" height="180px">
+      <label class="home__box__label" for="room">
+        Join a room:
+      </label>
+      <input
+        (input)="inputRoomCode = $any($event.target).value"
+        (keydown.enter)="joinRoom()"
+        class="home__box__input"
+        id="room"
+        placeholder="SSSss..."
+        type="text"
+        maxlength="3"
+        spellcheck="false"/>
+      <app-rough-box
+        [options]="{fill: 'rgba(255,0,0,0.4)', stroke: 'black'}"
+        [padding]="18"
+        (click)="joinRoom()"
+        (keydown.enter)="joinRoom()"
+        [ngClass]="{'home__box__button--available': isJoinAvaible()}"
+        class="home__box__button"
+        height="70px"
+        tabindex="0">
+      <span class="home__box__button__text">
+        Join
+      </span>
+      </app-rough-box>
+    </app-rough-box>
+    <app-rough-box
+      [options]="{fill: 'red', stroke: 'black'}"
+      [padding]="18"
+      (click)="createRoom()"
+      (keydown.enter)="createRoom()"
+      [ngClass]="{'home__box__button--available': isCreateRoomAvaible()}"
+      class="home__box__button--container"
+      height="70px"
+      tabindex="0">
+      <span class="home__box__button__text">
+        Create room
+      </span>
+    </app-rough-box>
+    <div class="home__legal">
+      <a class="home__legal__link" href="#">Github</a>
+      <a class="home__legal__link" href="#">Impressum</a>
+      <a class="home__legal__link" href="#">Privacy notice</a>
+    </div>
+  </div>
+
+</app-layout>
